@@ -18,5 +18,5 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: ${{ github.action_path }}/Install-RequiredModule.ps1 -RequiredModulesFile '${{inputs.requiredModules-path}}' -Verbose
+    - run: ${{ github.action_path }}/Install-RequiredModule.ps1 -RequiredModulesFile '${{inputs.requiredModules-path}}' -TrustRegisteredRepositories -Import -Verbose
       shell: pwsh
