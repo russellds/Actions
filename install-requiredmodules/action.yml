@@ -5,12 +5,18 @@ inputs:
     description: The path to the RequiredModules.psd1
     required: false
     default: ${{github.workspace}}/RequiredModules.psd1
-runs:
-  using: 'node12'
-  main: 'index.js'
+# runs:
+#   using: 'node12'
+#   main: 'index.js'
 
 # runs:
 #   using: composite
 #   steps:
 #     - run: ${{ github.action_path }}/action.ps1 -key '${{runner.os}}' -RequiredModules '${{inputs.requiredModules-path}}'
 #       shell: pwsh
+
+runs:
+  using: composite
+  steps:
+    - run: ${{ github.action_path }}/Install-RequiredModule.ps1 -RequiredModules '${{inputs.requiredModules-path}}' -Verbose
+      shell: pwsh
